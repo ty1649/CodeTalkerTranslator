@@ -1,0 +1,8 @@
+import GUI.TranslatorFrame;
+
+public class Panel {
+    public static void main(String[] args) {
+        TranslatorFrame codeTalker = new TranslatorFrame();
+        codeTalker.setVisible(true);
+    }
+}
