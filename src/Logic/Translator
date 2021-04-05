@@ -1,0 +1,144 @@
+package Logic;
+
+public class Translator {
+
+    public static String translate(String text, boolean tf) {
+        String translate = "";
+
+        if(tf) {
+            for (int i = 0; i < text.length(); i++) {
+                translate += englishLetterToWord(text.substring(i, i + 1)) + " ";
+            }
+        }
+        else {
+            String[] words = text.split(" ");
+            for (int i = 0; i < words.length; i++) {
+                translate += codeTalkerWordtoLetter(words[i]);
+            }
+        }
+
+        return translate;
+    }
+
+    private static String englishLetterToWord(String text) {
+        if(text.length()==1) {
+            switch(text) {
+                case "a":
+                    return "Wol-la-chee";
+                case "b":
+                    return "Shush";
+                case "c":
+                    return "Moashi";
+                case "d":
+                    return "Be";
+                case "e":
+                    return "Dzeh";
+                case "f":
+                    return "Ma-e";
+                case "g":
+                    return "Klizzie";
+                case "h":
+                    return "Lin";
+                case "i":
+                    return "Tkin";
+                case "j":
+                    return "Tkele-cho-gi";
+                case "k":
+                    return "Klizzie-yazzi";
+                case "l":
+                    return "Dibeh-yazzi";
+                case "m":
+                    return "Na-as-tso-si";
+                case "n":
+                    return "Nesh-chee";
+                case "o":
+                    return "Ne-ash-jsn";
+                case "p":
+                    return "Bi-sodih";
+                case "q":
+                    return "Ca-yeilth";
+                case "r":
+                    return "Gah";
+                case "s":
+                    return "Dibeh";
+                case "t":
+                    return "Thanzie";
+                case "u":
+                    return "No-da-ih";
+                case "v":
+                    return "a-keh-di-glini";
+                case "w":
+                    return "Gloeh-ih";
+                case "x":
+                    return "Al-an-as-dzoh";
+                case "y":
+                    return "Tsah-as-zih";
+                case "z":
+                    return "Besh-do-gliz";
+                case " ":
+                    return "/";
+            }
+        }
+        return text;
+    }
+
+    private static String codeTalkerWordtoLetter(String text) {
+        switch(text) {
+            case "wol-la-chee":
+                return "a";
+            case "shush":
+                return "b";
+            case "moashi":
+                return "c";
+            case "be":
+                return "d";
+            case "dzeh":
+                return "e";
+            case "ma-e":
+                return "f";
+            case "klizzie":
+                return "g";
+            case "lin":
+                return "h";
+            case "tkin":
+                return "i";
+            case "tkele-cho-gi":
+                return "j";
+            case "klizzie-yazzi":
+                return "k";
+            case "dibeh-yazzi":
+                return "l";
+            case "na-as-tso-si":
+                return "m";
+            case "nesh-chee":
+                return "n";
+            case "ne-ash-jsn":
+                return "o";
+            case "bi-sodih":
+                return "p";
+            case "ca-yeilth":
+                return "q";
+            case "gah":
+                return "r";
+            case "dibeh":
+                return "s";
+            case "thanzie":
+                return "t";
+            case "no-da-ih":
+                return "u";
+            case "a-keh-di-glini":
+                return "v";
+            case "gloeh-ih":
+                return "w";
+            case "al-an-as-dzoh":
+                return "x";
+            case "tsah-as-zih":
+                return "y";
+            case "besh-do-gliz":
+                return "z";
+            case "/":
+                return " ";
+        }
+        return text;
+    }
+}
