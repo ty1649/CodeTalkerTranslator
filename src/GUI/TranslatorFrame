@@ -1,0 +1,201 @@
+package GUI;
+
+import Logic.Translator;
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.*;
+
+public class TranslatorFrame extends JFrame {
+
+    private static final int WIDTH = 1200;
+    private static final int HEIGHT= 800;
+    private static final boolean TOCODELANG = true;
+    private static final boolean TOENGLISH = false;
+
+    public TranslatorFrame() {
+        super("Translator GUI (Made by Terry Yu)");
+        this.setSize(WIDTH, HEIGHT);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new FlowLayout());
+        this.setVisible(true);
+
+        JLabel title = new JLabel("English to Code Language (Navajo) Translator");
+        title.setFont(title.getFont().deriveFont(25.0f));
+        title.setFont(title.getFont().deriveFont(title.getFont().getStyle() | Font.BOLD));
+        this.add(title);
+
+        JPanel frame = new JPanel();
+
+        JTextArea start = new JTextArea("Enter text here",16, 40);
+        start.setEditable(true);
+        start.setLineWrap(true);
+        start.setFont(start.getFont().deriveFont(15.0f));
+        frame.add(start);
+
+        JTextArea end = new JTextArea(16, 40);
+        end.setEditable(false);
+        end.setLineWrap(true);
+        end.setFont(end.getFont().deriveFont(15.0f));
+        frame.add(end);
+
+        add(frame);
+        frame.setVisible(true);
+
+        JPanel buttons = new JPanel();
+        buttons.setLayout(new FlowLayout());
+
+        JButton translate = new JButton("Translate English to Code Language");
+        translate.setFont(new Font("Arial", Font.PLAIN, 16));
+        translate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String text = start.getText().trim().toLowerCase();
+                if(translate.getText().equals("Translate Code Language to English")) {
+                    end.setText(Translator.translate(text, TOENGLISH));
+                }
+                else {
+                    end.setText(Translator.translate(text, TOCODELANG));
+                }
+            }
+        });
+        buttons.add(translate);
+
+        JButton switchbutton = new JButton("Switch");
+        switchbutton.setFont(new Font("Arial", Font.PLAIN, 16));
+        switchbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(translate.getText().equals("Translate Code Language to English")) {
+                    translate.setText("Translate English to Code Language");
+                    title.setText("English to Code Language (Navajo) Translator");
+                }
+                else {
+                    translate.setText("Translate Code Language to English");
+                    title.setText("Code Language (Navajo) to English Translator");
+                }
+                start.setText(end.getText());
+            }
+        });
+        buttons.add(switchbutton);
+
+        JButton clear = new JButton("Clear");
+        clear.setFont(new Font("Arial", Font.PLAIN, 16));
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                start.setText("");
+            }
+        });
+        buttons.add(clear);
+
+
+        add(buttons);
+
+        JPanel info = new JPanel();
+        info.setPreferredSize(new Dimension(1200, 500));
+
+        JLabel titleinfo = new JLabel("Letter to Navajo Key", SwingConstants.CENTER);
+        titleinfo.setFont(titleinfo.getFont().deriveFont(15.0f));
+        titleinfo.setFont(titleinfo.getFont().deriveFont(titleinfo.getFont().getStyle() | Font.BOLD));
+        titleinfo.setPreferredSize(new Dimension(1100, 30));
+        info.add(titleinfo, BorderLayout.CENTER);
+
+        JPanel mappings = new JPanel();
+        mappings.setPreferredSize(new Dimension(1100, 500));
+
+        JPanel mappings1 = new JPanel();
+        mappings1.setPreferredSize(new Dimension(200, 300));
+        mappings1.setLayout(new GridLayout(9, 2));
+        mappings1.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+
+        mappings1.add(createMappingLabel("A"));
+        mappings1.add(createMappingLabel("Wol-la-chee"));
+        mappings1.add(createMappingLabel("B"));
+        mappings1.add(createMappingLabel("Shush"));
+        mappings1.add(createMappingLabel("C"));
+        mappings1.add(createMappingLabel("Moashi"));
+        mappings1.add(createMappingLabel("D"));
+        mappings1.add(createMappingLabel("Be"));
+        mappings1.add(createMappingLabel("E"));
+        mappings1.add(createMappingLabel("Dzeh"));
+        mappings1.add(createMappingLabel("F"));
+        mappings1.add(createMappingLabel("Ma-e"));
+        mappings1.add(createMappingLabel("G"));
+        mappings1.add(createMappingLabel("Klizzie"));
+        mappings1.add(createMappingLabel("H"));
+        mappings1.add(createMappingLabel("Lin"));
+        mappings1.add(createMappingLabel("I"));
+        mappings1.add(createMappingLabel("Tkin"));
+        mappings1.setVisible(true);
+
+        mappings.add(mappings1);
+
+        JPanel mappings2 = new JPanel();
+        mappings2.setPreferredSize(new Dimension(200, 300));
+        mappings2.setLayout(new GridLayout(9, 2));
+        mappings2.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+
+        mappings2.add(createMappingLabel("J"));
+        mappings2.add(createMappingLabel("Tkele-cho-gi"));
+        mappings2.add(createMappingLabel("K"));
+        mappings2.add(createMappingLabel("Klizzie-yazzi"));
+        mappings2.add(createMappingLabel("L"));
+        mappings2.add(createMappingLabel("Dibeh-yazzi"));
+        mappings2.add(createMappingLabel("M"));
+        mappings2.add(createMappingLabel("Na-as-tso-si"));
+        mappings2.add(createMappingLabel("N"));
+        mappings2.add(createMappingLabel("Nesh-chee"));
+        mappings2.add(createMappingLabel("O"));
+        mappings2.add(createMappingLabel("Ne-ash-jsn"));
+        mappings2.add(createMappingLabel("P"));
+        mappings2.add(createMappingLabel("Bi-sodih"));
+        mappings2.add(createMappingLabel("Q"));
+        mappings2.add(createMappingLabel("Ca-yeilth"));
+        mappings2.add(createMappingLabel("R"));
+        mappings2.add(createMappingLabel("Gah"));
+        mappings2.setVisible(true);
+
+        mappings.add(mappings2);
+
+        JPanel mappings3 = new JPanel();
+        mappings3.setPreferredSize(new Dimension(200, 300));
+        mappings3.setLayout(new GridLayout(9, 2));
+        mappings3.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+
+        mappings3.add(createMappingLabel("S"));
+        mappings3.add(createMappingLabel("Dibeh"));
+        mappings3.add(createMappingLabel("T"));
+        mappings3.add(createMappingLabel("Thanzie"));
+        mappings3.add(createMappingLabel("U"));
+        mappings3.add(createMappingLabel("No-da-ih"));
+        mappings3.add(createMappingLabel("V"));
+        mappings3.add(createMappingLabel("a-keh-di-glini"));
+        mappings3.add(createMappingLabel("W"));
+        mappings3.add(createMappingLabel("Gloeh-ih"));
+        mappings3.add(createMappingLabel("X"));
+        mappings3.add(createMappingLabel("Al-an-as-dzoh"));
+        mappings3.add(createMappingLabel("Y"));
+        mappings3.add(createMappingLabel("Tsah-as-zih"));
+        mappings3.add(createMappingLabel("Z"));
+        mappings3.add(createMappingLabel("Besh-do-gliz"));
+        mappings3.add(createMappingLabel("\"  \""));
+        mappings3.add(createMappingLabel("\" \\ \""));
+        mappings3.setVisible(true);
+
+        mappings.add(mappings3);
+
+        info.add(mappings);
+
+        add(info);
+    }
+
+    private static JLabel createMappingLabel(String in) {
+        JLabel out = new JLabel(in, SwingConstants.CENTER);
+        out.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        return out;
+    }
+
+}
