@@ -181,7 +181,7 @@ public class TranslatorFrame extends JFrame {
         mappings3.add(createMappingLabel("Z"));
         mappings3.add(createMappingLabel("Besh-do-gliz"));
         mappings3.add(createMappingLabel("\"  \""));
-        mappings3.add(createMappingLabel("\" \\ \""));
+        mappings3.add(createMappingLabel("\" / \""));
         mappings3.setVisible(true);
 
         mappings.add(mappings3);
